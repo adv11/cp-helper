@@ -3,22 +3,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.util.Collection;
-import java.util.InputMismatchException;
-import java.io.IOException;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
-import java.util.Queue;
-import java.util.LinkedList;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
  * Built using CHelper plug-in
  * Actual solution is at the top
  *
- * @author Abhishek Patel  ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh patel LinkedIn- https://www.linkedin.com/in/ashutosh-patel-7954651ab
  */
 public class Main {
     public static void main(String[] args) {
@@ -26,54 +22,45 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        Bitmap solver = new Bitmap();
+        EqualLIS solver = new EqualLIS();
         int testCount = Integer.parseInt(in.next());
         for (int i = 1; i <= testCount; i++)
             solver.solve(i, in, out);
         out.close();
     }
 
-    static class Bitmap {
-        int[] row = {-1, 1, 0, 0};
-        int[] col = {0, 0, -1, 1};
-        boolean[][] vis;
-
-        public void solve(int testNumber, InputReader in, OutputWriter out) {
-            int n = in.readInt(), m = in.readInt();
-            char[][] a = in.readTable(n, m);
-            int[][] res = new int[n][m];
-            vis = new boolean[n][m];
-            for (int i = 0; i < res.length; i++) {
-                Arrays.fill(res[i], Integer.MAX_VALUE);
+    static class EqualLIS {
+        public void solve(int testNumber, InputReader sc, OutputWriter out) {
+            int num = sc.readInt();
+            if (num == 2) {
+                out.printLine("NO");
+                return;
             }
-            Queue<IntIntPair> q = new LinkedList<>();
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    if (a[i][j] == '1') {
-                        q.add(new IntIntPair(i, j));
-                        res[i][j] = 0;
-                        vis[i][j] = true;
+            if (num % 2 == 0) {
+                out.printLine("YES");
+                int l = 2, r = num;
+                while (l != r) {
+                    out.print(l + " " + r + " ");
+                    r--;
+                    l++;
+                }
+                out.print(1 + " " + r);
+            } else {
+                out.printLine("YES");
+                int l = 1, r = num;
+                while (l <= r) {
+                    if (l == r) {
+                        out.print(l);
+                        break;
+                    } else {
+                        out.print(l + " " + r + " ");
                     }
+                    r--;
+                    l++;
                 }
             }
-            dfs(a, res, q);
-            for (int i = 0; i < n; i++) {
-                out.printLine(res[i]);
-            }
-        }
 
-        private void dfs(char[][] a, int[][] res, Queue<IntIntPair> q) {
-            while (!q.isEmpty()) {
-                IntIntPair p = q.poll();
-                for (int i = 0; i < row.length; i++) {
-                    int x = p.first + row[i], y = p.second + col[i];
-                    if (x >= 0 && x < a.length && y >= 0 && y < a[0].length && !vis[x][y]) {
-                        res[x][y] = res[p.first][p.second] + 1;
-                        q.add(new IntIntPair(x, y));
-                        vis[x][y] = true;
-                    }
-                }
-            }
+            out.printLine();
         }
 
     }
@@ -89,22 +76,30 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public void print(int[] array) {
-            for (int i = 0; i < array.length; i++) {
+        public void print(Object... objects) {
+            for (int i = 0; i < objects.length; i++) {
                 if (i != 0) {
                     writer.print(' ');
                 }
-                writer.print(array[i]);
+                writer.print(objects[i]);
             }
         }
 
-        public void printLine(int[] array) {
-            print(array);
+        public void printLine() {
+            writer.println();
+        }
+
+        public void printLine(Object... objects) {
+            print(objects);
             writer.println();
         }
 
         public void close() {
             writer.close();
+        }
+
+        public void print(int i) {
+            writer.print(i);
         }
 
     }
@@ -122,22 +117,6 @@ public class Main {
 
         public static boolean isWhitespace(int c) {
             return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
-        }
-
-        public char[] readCharArray(int size) {
-            char[] array = new char[size];
-            for (int i = 0; i < size; i++) {
-                array[i] = readCharacter();
-            }
-            return array;
-        }
-
-        public char[][] readTable(int rowCount, int columnCount) {
-            char[][] table = new char[rowCount][];
-            for (int i = 0; i < rowCount; i++) {
-                table[i] = this.readCharArray(columnCount);
-            }
-            return table;
         }
 
         public int read() {
@@ -202,14 +181,6 @@ public class Main {
             return isWhitespace(c);
         }
 
-        public char readCharacter() {
-            int c = read();
-            while (isSpaceChar(c)) {
-                c = read();
-            }
-            return (char) c;
-        }
-
         public String next() {
             return readString();
         }
@@ -217,48 +188,6 @@ public class Main {
         public interface SpaceCharFilter {
             boolean isSpaceChar(int ch);
 
-        }
-
-    }
-
-    static class IntIntPair implements Comparable<IntIntPair> {
-        public final int first;
-        public final int second;
-
-        public IntIntPair(int first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-
-            IntIntPair pair = (IntIntPair) o;
-
-            return first == pair.first && second == pair.second;
-        }
-
-        public int hashCode() {
-            int result = first;
-            result = 31 * result + second;
-            return result;
-        }
-
-        public String toString() {
-            return "(" + first + "," + second + ")";
-        }
-
-        public int compareTo(IntIntPair o) {
-            int value = Integer.compare(first, o.first);
-            if (value != 0) {
-                return value;
-            }
-            return Integer.compare(second, o.second);
         }
 
     }

@@ -1,0 +1,26 @@
+{
+  "name" : "D - Not Adding",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD"
+  },
+  "output" : {
+    "type" : "STANDARD"
+  },
+  "tests" : [ ],
+  "location" : "src/codes",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "codes.TaskD",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2022.01.19",
+  "contestName" : "Codeforces Round #766 (Div. 2)",
+  "truncate" : false,
+  "inputClass" : "net.cplibrary.io.InputReader",
+  "outputClass" : "net.cplibrary.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false
+}

@@ -3,8 +3,8 @@ package net.cplibrary.geometry;
 import net.cplibrary.io.InputReader;
 
 /**
- * @author Abhishek Patel (abhishekpatelmrj@gmail.com)
- * Linkedin : ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh Patel (ashutoshpatelnoida@gmail.com)
+ * Linkedin : ( https://www.linkedin.com/in/ashutosh-patel-7954651ab/ )
  */
 public class Point {
     public static final Point ORIGIN = new Point(0, 0);

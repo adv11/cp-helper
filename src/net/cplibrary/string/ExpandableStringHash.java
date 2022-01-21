@@ -4,8 +4,8 @@ import static java.util.Arrays.copyOf;
 import static net.cplibrary.string.SimpleStringHash.*;
 
 /**
- * @author Abhishek Patel (abhishekpatelmrj@gmail.com)
- * Linkedin : ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh Patel (ashutoshpatelnoida@gmail.com)
+ * Linkedin : ( https://www.linkedin.com/in/ashutosh-patel-7954651ab/ )
  */
 public class ExpandableStringHash extends AbstractStringHash {
     private final StringBuilder s = new StringBuilder();

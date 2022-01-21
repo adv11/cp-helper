@@ -4,8 +4,8 @@ import net.cplibrary.generated.collections.list.IntArray;
 import net.cplibrary.generated.collections.list.IntList;
 
 /**
- * @author Abhishek Patel (abhishekpatelmrj@gmail.com)
- * Linkedin : ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh Patel (ashutoshpatelnoida@gmail.com)
+ * Linkedin : ( https://www.linkedin.com/in/ashutosh-patel-7954651ab/ )
  */
 public class Range {
     public static IntList range(int from, int to) {

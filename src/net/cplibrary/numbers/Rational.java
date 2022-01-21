@@ -3,8 +3,8 @@ package net.cplibrary.numbers;
 import java.math.BigInteger;
 
 /**
- * @author Abhishek Patel (abhishekpatelmrj@gmail.com)
- * Linkedin : ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh Patel (ashutoshpatelnoida@gmail.com)
+ * Linkedin : ( https://www.linkedin.com/in/ashutosh-patel-7954651ab/ )
  */
 public class Rational implements Comparable<Rational> {
     public static final Rational MAX_VALUE = new Rational(Integer.MAX_VALUE, 1);

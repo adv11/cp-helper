@@ -3,8 +3,8 @@ package net.cplibrary.collections;
 import java.util.Random;
 
 /**
- * @author Abhishek Patel (abhishekpatelmrj@gmail.com)
- * Linkedin : ( https://www.linkedin.com/in/abhishek-p-6733b3195/ )
+ * @author Ashutosh Patel (ashutoshpatelnoida@gmail.com)
+ * Linkedin : ( https://www.linkedin.com/in/ashutosh-patel-7954651ab/ )
  */
 public abstract class AbstractTreapNode<T extends AbstractTreapNode> {
     private final static Random RANDOM = new Random(239);
